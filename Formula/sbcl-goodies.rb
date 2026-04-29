@@ -1,5 +1,5 @@
 class SbclGoodies < Formula
-  desc "Steel Bank Common Lisp system with Goodies"
+  desc "Steel Bank Common Lisp system with Goodies (macOS only)"
   homepage "https://www.sbcl.org/"
   url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.6.3/sbcl-2.6.3-source.tar.bz2"
   sha256 "e7432fb642952dd25a5fc0c56d218f3d0aa596ce42d33efa83091bca7d69988a"
@@ -21,6 +21,7 @@ class SbclGoodies < Formula
 
   end
 
+  depends_on :macos
   depends_on "sbcl" => :build
   depends_on "zstd" => :build
 

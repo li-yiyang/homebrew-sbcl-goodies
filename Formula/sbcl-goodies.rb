@@ -7,9 +7,10 @@ class SbclGoodies < Formula
                    "MIT", "Xerox", "BSD-3-Clause",
                    # libzstd license
                    { any_of: ["BSD-3-Clause", "GPL-2.0-only"] },
-                   "BSD-2-Clause", # programs/zstdgrep, lib/libzstd.pc.in
-                   "MIT", # lib/dictBuilder/divsufsort.c
-                  ]
+                   # programs/zstdgrep, lib/libzstd.pc.in
+                   "BSD-2-Clause",
+                   # lib/dictBuilder/divsufsort.c
+                   "MIT"]
   compatibility_version 2
   head "https://git.code.sf.net/p/sbcl/sbcl.git", branch: "master"
 
@@ -18,12 +19,12 @@ class SbclGoodies < Formula
   end
 
   bottle do
-
+    root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.3"
   end
 
-  depends_on :macos
   depends_on "sbcl" => :build
   depends_on "zstd" => :build
+  depends_on :macos
 
   def install
     # Remove non-ASCII values from environment as they cause build failures
@@ -38,10 +39,8 @@ class SbclGoodies < Formula
     File.write("version.lisp-expr", "\"2.6.3-goodies\"")
 
     # Patch to use static linked libzstd
-    on_macos do
-      inreplace "src/runtime/Config.arm64-darwin",  "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"
-      inreplace "src/runtime/Config.x86-64-darwin", "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"
-    end
+    inreplace "src/runtime/Config.arm64-darwin",  "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"
+    inreplace "src/runtime/Config.x86-64-darwin", "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"
 
     xc_cmdline = "sbcl --noinform --no-userinit"
 

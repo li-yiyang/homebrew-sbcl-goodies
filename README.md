@@ -1,4 +1,7 @@
-# Li-yiyang Sbcl-goodies
+# Ryo's SBCL-Goodies
+
+## About
+This tap includes my port of [SBCL-Goodies](https://github.com/sionescu/sbcl-goodies/) to macOS arm64 platform. 
 
 ## How do I install these formulae?
 

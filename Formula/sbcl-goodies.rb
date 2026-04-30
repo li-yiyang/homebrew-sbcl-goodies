@@ -18,9 +18,7 @@ class SbclGoodies < Formula
     url "https://sourceforge.net/projects/sbcl/rss?path=/sbcl"
   end
 
-  bottle do
-    root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.3"
-  end
+  option "with-sb-ldb", "With SBCL ldb (useful for dev)"
 
   depends_on "sbcl" => :build
   depends_on "zstd" => :build
@@ -54,11 +52,11 @@ class SbclGoodies < Formula
       "--with-sb-linkable-runtime",
       "--without-gencgc", "--with-mark-region-gc",
       "--without-sb-eval", "--with-sb-fasteval",
-      "--with-sb-ldb",
       "--with-sb-thread",
       "--with-sb-xref-for-internals",
       "--with-sb-after-xc-core"
     ]
+    args << "--with-sb-ldb" if build.with? "sb-ldb"
     system "./make.sh", *args
 
     ENV["INSTALL_ROOT"] = prefix

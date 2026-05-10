@@ -20,7 +20,8 @@ class SbclGoodies < Formula
 
   bottle do
     root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.4"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe: "657709aaf3e88e8db8a3d3f6066df1241ecebc3f8c835266eb3353618dfe9d71"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "5e4bb112a0873e8502a94936d65ec2bcf04f0ee9be5946f7ff7c64dbcf4852f8"
   end
 
   option "with-sb-ldb", "With SBCL ldb (useful for dev)"

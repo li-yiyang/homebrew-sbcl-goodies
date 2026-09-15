@@ -1,8 +1,8 @@
 class SbclGoodies < Formula
   desc "Steel Bank Common Lisp system with Goodies (macOS only)"
   homepage "https://www.sbcl.org/"
-  url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.6.4/sbcl-2.6.4-source.tar.bz2"
-  sha256 "3ba53e654b60feb7c4f50466199d6d5260f2661c711ba22d4b770b655400d57b"
+  url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.6.8/sbcl-2.6.8-source.tar.bz2"
+  sha256 "ad5126dfdfba5db27ee77bcc25893020fe522d0b7653d45b4c4795ade3ddc23d"
   license all_of: [:public_domain,
                    "MIT", "Xerox", "BSD-3-Clause",
                    # libzstd license
@@ -19,9 +19,7 @@ class SbclGoodies < Formula
   end
 
   bottle do
-    root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.4"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe: "5e4bb112a0873e8502a94936d65ec2bcf04f0ee9be5946f7ff7c64dbcf4852f8"
+    root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.8"
   end
 
   option "with-sb-ldb", "With SBCL ldb (useful for dev)"
@@ -40,7 +38,7 @@ class SbclGoodies < Formula
     end
 
     # Override SBCL lisp-implementation-version
-    File.write("version.lisp-expr", "\"2.6.4-goodies\"")
+    File.write("version.lisp-expr", "\"2.6.8-goodies\"")
 
     # Patch to use static linked libzstd
     inreplace "src/runtime/Config.arm64-darwin",  "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"

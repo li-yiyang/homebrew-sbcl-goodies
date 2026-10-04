@@ -41,8 +41,8 @@ class SbclGoodies < Formula
     File.write("version.lisp-expr", "\"2.6.8-goodies\"")
 
     # Patch to use static linked libzstd
-    inreplace "src/runtime/Config.arm64-darwin",  "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"
-    inreplace "src/runtime/Config.x86-64-darwin", "-lzstd", "#{Formula["zstd"].opt_lib}/libzstd.a"
+    inreplace "src/runtime/Config.arm64-darwin",  "-lzstd", "#{formula_opt_lib("zstd")}/libzstd.a"
+    inreplace "src/runtime/Config.x86-64-darwin", "-lzstd", "#{formula_opt_lib("zstd")}/libzstd.a"
 
     # pull asdf
     chdir("contrib/asdf") do

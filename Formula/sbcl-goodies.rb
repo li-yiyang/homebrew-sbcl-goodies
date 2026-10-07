@@ -1,8 +1,8 @@
 class SbclGoodies < Formula
   desc "Steel Bank Common Lisp system with Goodies (macOS only)"
   homepage "https://www.sbcl.org/"
-  url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.6.8/sbcl-2.6.8-source.tar.bz2"
-  sha256 "ad5126dfdfba5db27ee77bcc25893020fe522d0b7653d45b4c4795ade3ddc23d"
+  url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.6.9/sbcl-2.6.9-source.tar.bz2"
+  sha256 "c6fd1d735570eb4ff34caf9609988ca77ed0bd12b55d09a4fed075be890da513"
   license all_of: [:public_domain,
                    "MIT", "Xerox", "BSD-3-Clause",
                    # libzstd license
@@ -38,7 +38,7 @@ class SbclGoodies < Formula
     end
 
     # Override SBCL lisp-implementation-version
-    File.write("version.lisp-expr", "\"2.6.8-goodies\"")
+    File.write("version.lisp-expr", "\"2.6.9-goodies\"")
 
     # Patch to use static linked libzstd
     inreplace "src/runtime/Config.arm64-darwin",  "-lzstd", "#{formula_opt_lib("zstd")}/libzstd.a"

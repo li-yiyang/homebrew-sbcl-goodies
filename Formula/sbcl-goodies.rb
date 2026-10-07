@@ -19,7 +19,7 @@ class SbclGoodies < Formula
   end
 
   bottle do
-    root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.8"
+    root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.9"
   end
 
   option "with-sb-ldb", "With SBCL ldb (useful for dev)"

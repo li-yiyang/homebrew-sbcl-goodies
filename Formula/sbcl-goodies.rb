@@ -22,7 +22,8 @@ class SbclGoodies < Formula
     root_url "https://github.com/li-yiyang/homebrew-sbcl-goodies/releases/download/sbcl-goodies-2.6.9"
   end
 
-  option "with-sb-ldb", "With SBCL ldb (useful for dev)"
+  option "with-sb-ldb",      "With SBCL ldb (useful for dev)"
+  option "with-sb-fasteval", "With SBCL fasteval"
 
   depends_on "sbcl" => :build
   depends_on "zstd" => :build
@@ -60,12 +61,13 @@ class SbclGoodies < Formula
       "--with-sb-core-compression",
       "--with-sb-linkable-runtime",
       "--without-gencgc", "--with-mark-region-gc",
-      "--without-sb-eval", "--with-sb-fasteval",
       "--with-sb-thread",
       "--with-sb-xref-for-internals",
       "--with-sb-after-xc-core"
     ]
-    args << "--with-sb-ldb" if build.with? "sb-ldb"
+    args << "--with-sb-ldb"      if build.with? "sb-ldb"
+    args << "--without-sb-eval"  if build.with? "sb-fasteval"
+    args << "--with-sb-fasteval" if build.with? "sb-fasteval"
     system "./make.sh", *args
 
     ENV["INSTALL_ROOT"] = prefix
